@@ -6,22 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hormonal Contraception & BRCA</title>
 
+  <!-- Apply theme before Tailwind loads -->
   <script>
-  // Apply saved theme as early as possible
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") {
-    document.documentElement.classList.add("dark");
-  }
-</script>
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    }
+  </script>
 
-
-  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 
-  <!-- AOS Animation -->
+  <!-- AOS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 </head>
 <body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white font-sans">
@@ -51,6 +50,7 @@
       </p>
     </section>
 
+    
     <!-- Risk Factors -->
     <section data-aos="fade-up">
       <h2 class="text-2xl font-semibold text-purple-600 dark:text-green-300 mb-2">Risk Factors</h2>
@@ -152,55 +152,30 @@
         <li>What lifestyle changes reduce cancer risk?</li>
       </ul>
     </section>
+    
+    <!-- You can copy-paste the full article content from earlier if needed -->
+
   </main>
 
-  <!-- AOS Script + Theme Script -->
+  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
-    const toggleBtn = document.getElementById('themeToggle');
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      const isDark = document.body.classList.contains('dark');
-      toggleBtn.textContent = isDark ? '☀️' : '🌙';
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    });
-    window.addEventListener('DOMContentLoaded', () => {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark') {
-        document.body.classList.add('dark');
-        toggleBtn.textContent = '☀️';
-      } else {
-        toggleBtn.textContent = '🌙';
-      }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleBtn = document.getElementById("themeToggle");
+
+      // Set initial icon based on current theme
+      const isDark = document.documentElement.classList.contains("dark");
+      toggleBtn.textContent = isDark ? "☀️" : "🌙";
+
+      toggleBtn.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+        const isDarkMode = document.documentElement.classList.contains("dark");
+        toggleBtn.textContent = isDarkMode ? "☀️" : "🌙";
+        localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+      });
     });
   </script>
-
-<!-- AOS Script + Synced Theme Toggle Script -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init();
-
-  // Apply saved theme before anything else
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") {
-    document.documentElement.classList.add("dark");
-  } else {
-    document.documentElement.classList.remove("dark");
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const toggleBtn = document.getElementById("themeToggle");
-    const isDark = document.documentElement.classList.contains("dark");
-    toggleBtn.textContent = isDark ? "☀️" : "🌙";
-
-    toggleBtn.addEventListener("click", () => {
-      document.documentElement.classList.toggle("dark");
-      const isDarkMode = document.documentElement.classList.contains("dark");
-      toggleBtn.textContent = isDarkMode ? "☀️" : "🌙";
-      localStorage.setItem("theme", isDarkMode ? "dark" : "light");
-    });
-  });
-</script>
 </body>
 </html>
